@@ -1,0 +1,1 @@
+Event-based inheritance model

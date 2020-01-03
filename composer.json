@@ -1,0 +1,32 @@
+{
+  "name": "smoren/event-based-inheritance-model",
+  "description": "Event-based inheritance model",
+  "keywords": ["event", "inheritance"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Smoren",
+      "email": "ofigate@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Smoren\\EventBus\\": "src"
+    }
+  },
+  "config": {
+    "fxp-asset": {
+      "enabled": false
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}
