@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Smoren\EventBus;
+namespace Smoren\EventBasedInheritanceModel;
 
 
 use stdClass;

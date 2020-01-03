@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Smoren\\EventBus\\": "src"
+      "Smoren\\EventBasedInheritanceModel\\": "src"
     }
   },
   "config": {
