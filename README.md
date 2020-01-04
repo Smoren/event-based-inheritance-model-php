@@ -72,7 +72,7 @@ Array
 echo "\n";
 
 // инициируем событие onMyTest
-$params = new stdClass();
+$params = new \stdClass();
 $params->a = 1;
 $result = $bus->trigger('onMyTest', $params);
 print_r($result); // в результате получим то, что вернет верхний в стеке обработчик
