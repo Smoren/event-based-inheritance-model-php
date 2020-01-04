@@ -3,23 +3,27 @@
 
 namespace Smoren\EventBasedInheritanceModel;
 
-
+/**
+ * Класс, реализующий шину событий с цепочечно-наследуемыми обработчиками
+ * @package Smoren\EventBasedInheritanceModel
+ * @author Smoren <ofigate@gmail.com>
+ */
 class EventBus
 {
     /**
-     * @var Listener[][]
+     * @var Listener[][] Карта стеков обработчиков событий по имени события
      */
     protected $listeners = [];
 
     /**
      * EventBus constructor.
-     * @param array $defaultListeners
+     * @param array $defaultListeners карта дефолтных обработчиков событий по имени события
      */
     public function __construct(array $defaultListeners = [])
     {
         /**
-         * @var string $eventName
-         * @var Listener $callback
+         * @var string $eventName имя события
+         * @var Listener $callback функция-обработчик
          */
         foreach($defaultListeners as $eventName => $callback) {
             $this->addListener($eventName, $callback);
@@ -27,8 +31,9 @@ class EventBus
     }
 
     /**
-     * @param string $eventName
-     * @param callable $callback
+     * Добавляет обработчик событий в стек
+     * @param string $eventName имя события
+     * @param callable $callback функция-обработчик
      * @return $this
      */
     public function addListener(string $eventName, callable $callback): self
@@ -47,10 +52,11 @@ class EventBus
     }
 
     /**
-     * @param string $eventName
-     * @param mixed $params
-     * @param int|null $index
-     * @return mixed
+     * Инициирует событие
+     * @param string $eventName имя события
+     * @param mixed $params дополнительные параметры события
+     * @param int|null $index индекс обработчика в массиве (стеке)
+     * @return mixed результат, возвращаемый запущенным обработчиком
      * @throws EventBusException
      */
     public function trigger(string $eventName, &$params, ?int $index = null)
@@ -70,9 +76,10 @@ class EventBus
     }
 
     /**
-     * @param array $listenerParams
-     * @param mixed $params
-     * @return mixed|null
+     * Вызывает предыдущий обработчик события в стеке
+     * @param array $listenerParams внутренные параметры обработчика
+     * @param mixed $params дополнительные параметры события
+     * @return mixed|null результат, возвращаемый запущенным обработчиком, либо null, если дошли до дна стека
      * @throws EventBusException
      */
     public function handlePrevious(array $listenerParams, &$params)

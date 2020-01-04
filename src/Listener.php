@@ -4,6 +4,11 @@
 namespace Smoren\EventBasedInheritanceModel;
 
 
+/**
+ * Класс обработчика события
+ * @package Smoren\EventBasedInheritanceModel
+ * @author Smoren <ofigate@gmail.com>
+ */
 class Listener
 {
     /**
@@ -23,9 +28,9 @@ class Listener
 
     /**
      * Listener constructor.
-     * @param EventBus $bus
-     * @param array $params
-     * @param callable $callback
+     * @param EventBus $bus объект шины событий
+     * @param array $params внутренные параметры обработчика
+     * @param callable $callback функция-обработчик
      */
     public function __construct(EventBus $bus, array $params, callable $callback)
     {
@@ -35,8 +40,9 @@ class Listener
     }
 
     /**
-     * @param mixed $params
-     * @return mixed
+     * Запускает обработчик события
+     * @param mixed $params дополнительные параметры события
+     * @return mixed результат, возвращаемый функцией-обработчиком
      */
     public function handle(&$params)
     {
@@ -44,8 +50,9 @@ class Listener
     }
 
     /**
-     * @param mixed $params
-     * @return mixed|null
+     * Вызывает предыдущий обработчик события в стеке
+     * @param mixed $params дополнительные параметры события
+     * @return mixed|null результат, возвращаемый запущенным обработчиком, либо null, если дошли до дна стека
      * @throws EventBusException
      */
     public function handlePrevious(&$params)
