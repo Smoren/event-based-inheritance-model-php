@@ -53,7 +53,7 @@ class ExampleFactory
         $bus->addListener('onMyTest', function(&$params, Listener $listener) {
             $listener->handlePrevious($params);
             $params->a++;
-            echo "onMyTest (0): ".json_encode($params)."\n";
+            echo "onMyTest (1): ".json_encode($params)."\n";
             return $params;
         });
 

@@ -50,7 +50,7 @@ $bus->addListener('onMyTest', function(&$params, Listener $listener) {
 $bus->addListener('onMyTest', function(&$params, Listener $listener) {
     $listener->handlePrevious($params);
     $params->a++;
-    echo "onMyTest (0): ".json_encode($params)."\n";
+    echo "onMyTest (1): ".json_encode($params)."\n";
     return $params;
 });
 
@@ -78,7 +78,7 @@ $result = $bus->trigger('onMyTest', $params);
 print_r($result); // в результате получим то, что вернет верхний в стеке обработчик
 /*
 onMyTest (0): {"a":2}
-onMyTest (0): {"a":3}
+onMyTest (1): {"a":3}
 stdClass Object
 (
     [a] => 3
